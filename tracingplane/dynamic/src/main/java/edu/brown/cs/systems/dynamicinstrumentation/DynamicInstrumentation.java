@@ -43,10 +43,13 @@ public class DynamicInstrumentation {
           method.setAccessible(true);
           URLClassLoader sysloader = (URLClassLoader) ClassLoader.getSystemClassLoader();
           method.invoke(sysloader, (Object) new URL(toolsJarURL));
+          System.out.println("##### " + DynamicInstrumentation.class.getClassLoader());
           VirtualMachine.class.toString();
         } catch (Exception e) {
           System.err.println("Failed to add " + name + ".jar to classpath: " + e.toString());
           e.printStackTrace();
+        } catch(Throwable e){
+            e.printStackTrace();
         }
       }
     

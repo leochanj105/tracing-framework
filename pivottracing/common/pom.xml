@@ -40,6 +40,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
                 <executions>
                     <execution>
                         <id>generate-sources</id>
@@ -64,6 +65,21 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- <plugin> -->
+            <!--     <groupId>org.apache.maven.plugins</groupId> -->
+            <!--     <artifactId>maven-shade-plugin</artifactId> -->
+            <!--     <configuration> -->
+            <!--         <!-1- put your configurations here -1-> -->
+            <!--     </configuration> -->
+            <!--     <executions> -->
+            <!--         <execution> -->
+            <!--             <phase>package</phase> -->
+            <!--             <goals> -->
+            <!--                 <goal>shade</goal> -->
+            <!--             </goals> -->
+            <!--         </execution> -->
+            <!--     </executions> -->
+            <!-- </plugin> -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>

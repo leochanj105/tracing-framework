@@ -1,5 +1,7 @@
 package edu.brown.cs.systems.retro.aggregation.aggregators;
 
+import com.typesafe.config.ConfigFactory;
+
 import edu.brown.cs.systems.retro.aggregation.Resource;
 import edu.brown.cs.systems.retro.aggregation.Resource.Operation;
 import edu.brown.cs.systems.retro.aggregation.ResourceReportingSettings;

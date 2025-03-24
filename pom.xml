@@ -246,22 +246,22 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <!-- <version> Your Version Here </version> -->
-                    <configuration>
-                        <!-- put your configurations here -->
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>shade</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+                <!-- <plugin> -->
+                <!--     <groupId>org.apache.maven.plugins</groupId> -->
+                <!--     <artifactId>maven-shade-plugin</artifactId> -->
+                <!--     <!-1- <version> Your Version Here </version> -1-> -->
+                <!--     <configuration> -->
+                <!--         <!-1- put your configurations here -1-> -->
+                <!--     </configuration> -->
+                <!--     <executions> -->
+                <!--         <execution> -->
+                <!--             <phase>package</phase> -->
+                <!--             <goals> -->
+                <!--                 <goal>shade</goal> -->
+                <!--             </goals> -->
+                <!--         </execution> -->
+                <!--     </executions> -->
+                <!-- </plugin> -->
                 <!-- <plugin> -->
                 <!--     <groupId>org.apache.maven.plugins</groupId> -->
                 <!--     <artifactId>maven-assembly-plugin</artifactId> -->

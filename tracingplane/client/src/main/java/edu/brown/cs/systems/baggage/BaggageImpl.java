@@ -295,6 +295,10 @@ public class BaggageImpl {
         Handlers.preSplit(this);
         Map<ByteString, SetMultimap<ByteString, ByteString>> copiedData = Maps.newHashMapWithExpectedSize(contents.size());
         for (ByteString namespace : contents.keySet()) {
+            // System.out.println("## namespace");
+            // for(StackTraceElement ee:Thread.currentThread().getStackTrace()){
+            //     System.out.println(ee);
+            // }
             copiedData.put(namespace, HashMultimap.create(contents.get(namespace)));
         }
         BaggageImpl newImpl = new BaggageImpl(copiedData);

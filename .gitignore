@@ -1,3 +1,8 @@
+edu
+reference.conf
+META-INF
+.vim
+xtrace-data
 .cache
 .idea
 *.cache-main
@@ -8,3 +13,4 @@ target
 .settings
 .project
 .DS_Store
+**/dependency-reduced-pom.xml

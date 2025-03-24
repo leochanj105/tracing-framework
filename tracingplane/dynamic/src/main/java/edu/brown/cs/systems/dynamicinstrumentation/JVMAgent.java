@@ -90,6 +90,7 @@ public class JVMAgent extends Agent {
 
     @Override
     public void reload(Map<String, byte[]> modifiedClassFiles) throws UnmodifiableClassException {
+        System.out.println("reloading " + modifiedClassFiles.keySet());
         new Transformer(modifiedClassFiles).transform();
     }
     
