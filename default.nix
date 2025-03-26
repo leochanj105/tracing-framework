@@ -1,39 +1,24 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}
+}:
 
 let
-  protobuf_2_5_0 = pkgs.stdenv.mkDerivation {
-    pname = "protobuf";
-    version = "2.5.0";
-    src = builtins.fetchTarball {
-      url = "https://github.com/google/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.bz2";
-      sha256 = "sha256:0p85zh97f35p700v7p7iyfik84cy1p97qkwgy0f566irqiwmb872";
-    };
+  inherit (pkgs)
+    stdenv
+    fetchFromGitHub
+    callPackage
+    lib
+    jdk8
+    maven
+    aspectj;
 
-    nativeBuildInputs = with pkgs; [
-      gnumake
-      autoconf
-      curl
-      bzip2
-      automake
-      libtool
-    ];
-
-    configurePhase = ''
-      ./configure --prefix=$out
-    '';
-
-    buildPhase = ''
-      make -j
-      make check
-    '';
-
-    installPhase = ''
-      mkdir -p $out
-      make install
-    '';
-  };
+  cherrypiejamNurPackages = callPackage (fetchFromGitHub {
+    owner = "cherrypiejam";
+    repo = "nur-packages";
+    rev = "81742efc8375ffe23f854f0ec938f5bb736483fb";
+    hash = "sha256-SfLMDb8+mv9eeXhESPITAsWzl3aTo4Q3ldijrUah0+4=";
+  }) { };
 in
-pkgs.maven.buildMavenPackage {
+maven.buildMavenPackage {
   pname = "tracing-framework";
   version = "0.0.1";
 
@@ -41,20 +26,20 @@ pkgs.maven.buildMavenPackage {
 
   mvnHash = "sha256-PDEZGUFVsZfh1y9U8J7vIvy+3WmYvLteugFw1byrWS4=";
 
-  mvnParameters = pkgs.lib.escapeShellArgs [
+  mvnParameters = lib.escapeShellArgs [
     "clean"
     "install"
     "-U"
     "-DskipTests"
   ];
 
-  nativeBuildInputs = with pkgs; [
-    protobuf_2_5_0
+  nativeBuildInputs = [
+    cherrypiejamNurPackages.protobuf_2_5_0
     jdk8
     aspectj
   ];
 
-  mvnJdk = pkgs.jdk8;
+  mvnJdk = jdk8;
 
   postInstall = ''
     mv dist $out
