@@ -24,7 +24,7 @@ maven.buildMavenPackage {
 
   src = ./.;
 
-  mvnHash = "sha256-PDEZGUFVsZfh1y9U8J7vIvy+3WmYvLteugFw1byrWS4=";
+  mvnHash = "sha256-6GoLhtCzI9zfB/lz/U05/w+HHtMRC8YQmo52oGivjfA=";
 
   mvnParameters = lib.escapeShellArgs [
     "clean"
@@ -42,6 +42,6 @@ maven.buildMavenPackage {
   mvnJdk = jdk8;
 
   postInstall = ''
-    mv dist $out
+    cp -r . $out
   '';
 }
