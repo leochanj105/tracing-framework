@@ -25,10 +25,9 @@ maven.buildMavenPackage {
   src = lib.cleanSourceWith {
     filter = (path: _type: (builtins.baseNameOf (builtins.toString path)) != "xtrace-data");
     src = ./.;
-  }; 
+  };
 
   mvnHash = "sha256-AuqoNezjLg3JCQodD6PlxMQ5F0USEtyBsTHxCJ7+ZcA=";
-  # mvnHash = "sha256-Co1gcUaN3MTVLCam9h5aauyXrp3LJ6q+q6nFDbIU2fk=";
 
   mvnParameters = lib.escapeShellArgs [
     "clean"
