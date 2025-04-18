@@ -1,4 +1,5 @@
 { pkgs ? import <nixpkgs> {}
+, mvnHash
 }:
 
 let
@@ -24,10 +25,10 @@ maven.buildMavenPackage {
 
   src = lib.cleanSourceWith {
     filter = (path: _type: (builtins.baseNameOf (builtins.toString path)) != "xtrace-data");
-    src = ./.;
+    src = lib.cleanSource ./.;
   };
 
-  mvnHash = "sha256-AuqoNezjLg3JCQodD6PlxMQ5F0USEtyBsTHxCJ7+ZcA=";
+  inherit mvnHash;
 
   mvnParameters = lib.escapeShellArgs [
     "clean"
